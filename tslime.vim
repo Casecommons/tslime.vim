@@ -11,15 +11,16 @@ let g:tslime_loaded = 1
 " Main function.
 " Use it in your script if you want to send text to a tmux session.
 function! Send_to_Tmux(text)
-  if !exists("b:tmux_sessionname") || !exists("b:tmux_windowname") || !exists("b:tmux_panenumber")
-    if exists("g:tmux_sessionname") && exists("g:tmux_windowname") && exist("g:tmux_panenumber")
-      let b:tmux_sessionname = g:tmux_sessionname
-      let b:tmux_windowname = g:tmux_windowname
-      let b:tmux_panenumber = g:tmux_panenumber
-    else
-      call <SID>Tmux_Vars()
-    end
-  end
+  " if !exists("b:tmux_sessionname") || !exists("b:tmux_windowname") || !exists("b:tmux_panenumber")
+    " if exists("g:tmux_sessionname") && exists("g:tmux_windowname") && exist("g:tmux_panenumber")
+    " default to 0/test/0 instead of variablizing this as a result of issues 
+    let b:tmux_sessionname = 0
+    let b:tmux_windowname = "test"
+    let b:tmux_panenumber = 0
+    " else
+      " call <SID>Tmux_Vars()
+    " end
+  " end
 
   let target = b:tmux_sessionname . ":" . b:tmux_windowname . "." . b:tmux_panenumber
 
